@@ -38,14 +38,22 @@ print("Results file path: \(path)")
 
 
 
-let lab1 = LabIA(filePath: path)
+//let lab1 = LabIA(filePath: path)
+//
+//print("Simulating...")
+//lab1.esp({
+//    print("Done!")
+//})
 
-print("Simulating...")
-lab1.esp({
-    print("Done!")
+
+let lab2 = Lab2(filePath: path)
+
+print("simulating")
+lab2.esp({
+    print("Done, results saved")
 })
 
-
+//lab2.execute(Lab2Initial(alpha: <#T##Double#>, dt: <#T##Double#>, stepsNo: <#T##Int#>), initialState: <#T##[ParticleState]#>)
 
 
 

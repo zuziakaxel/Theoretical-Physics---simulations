@@ -44,11 +44,7 @@ struct AZTextFile {
         guard file != nil else {
             return
         }
-        fputs(text, file)        
-        for c in text.characters {
-
-        }
-        
+        fputs(text, file)
     }
     
 }

@@ -16,6 +16,10 @@ protocol Exercise {
 }
 
 private let G = -9.81
+private let m = 1.0
+private let V0 = 10.0
+private let X0 = 0.0
+private let dt = 0.1
 
 class LabIA: Exercise {
 
@@ -41,11 +45,12 @@ class LabIA: Exercise {
         var t = 0.0 // s
         var e = 0.0 // J
         
-        init(mass m: Double = 1.0, position x: Double = 0.0, velocity v: Double = 0.0, time t: Double = 0.0, postitionAnalytics xa: Double = 0.0) {
+        init(mass m: Double = 1.0, position x: Double = X0, velocity v: Double = V0, time t: Double = 0.0, postitionAnalytics xa: Double = X0) {
             self.m = m
             self.x = x
             self.v = v
             self.xa = xa
+            self.e = 0.5*self.m*pow(self.v,2) + self.m*G*self.x
         }
         
         init(previousState state: ParticleState, timeInterval dt: Double, initialPosition x_0: Double, initialVelocity v_0: Double) {
@@ -56,11 +61,7 @@ class LabIA: Exercise {
             self.xa = x_0 + (v_0 * t) + (0.5 * G * pow(t, 2))
         }
     }
-    
-    
-    var dt = 0.001
-    var x_0 = 0.0
-    var v_0 = 10.0
+
 
     private var particle: Particle!
     private var states: [ParticleState] = []
@@ -127,14 +128,14 @@ class LabIA: Exercise {
     
     private func simulate(verbose: Bool = false, completion: () -> Void) {
         states = []
-        particle = Particle(state: ParticleState(mass: 2.0, position: 0.0, velocity: 10.0))
+        particle = Particle(state: ParticleState(mass: m, position: X0, velocity: V0))
         
         repeat {
             states.append(particle.state)
             if verbose {
                 print("\(particle.state.t) \t \(particle.state.x) \t \(particle.state.xa) \t \(particle.state.v) \t \(particle.state.e)")
             }
-            particle.state = ParticleState(previousState: particle.state, timeInterval: dt, initialPosition: x_0, initialVelocity: v_0)
+            particle.state = ParticleState(previousState: particle.state, timeInterval: dt, initialPosition: X0, initialVelocity: V0)
         } while particle.state.x >= 0.0
         completion()
     }
