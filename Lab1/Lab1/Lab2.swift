@@ -3,11 +3,10 @@
 //  Lab1
 //
 //  Created by Axel Zuziak on 08.12.2015.
-//  Copyright © 2015 Axel Zuziak. All rights reserved.
+//  Copyright © 2015 Axel Zuziak. All rights reserved./Users/zuziakaxel/Library/Mobile Documents/com~apple~CloudDocs/Semestr5/FT_LAB/Lab2/plots/skrypt.plot
 //
 
 import Foundation
-
 /**
  *   w sprawozdaniu:
  Dla jakiego parametru dt symulacja jest stabilna? (Kiedy przestana nam sie zmieniac wyniki)
@@ -78,15 +77,19 @@ class Lab2: Exercise {
     
     var filePath: String = ""
     
-    init(filePath: String) {
+    init(filePath: String, initials: Lab2Initial? = nil, initialState: ParticleState? = nil) {
         self.filePath = filePath
+        self.initials = initials == nil ? Lab2Initial(alpha: 0.5, dt: 0.1, stepsNo: 500) : initials!
+        self.initialState = initialState == nil ? ParticleState(t: 0, phi: 1.1, z: 1.0, omega: 0.0, v: 0.0, initial: self.initials) : initialState!
     }
     
+    let initialState: ParticleState
+    let initials: Lab2Initial
     
     func execute(verbose: Bool, completion: () -> Void) {
-        let initials = Lab2Initial(alpha: 0.5, dt: 0.1, stepsNo: 500)
-        let initialState = ParticleState(t: 0, phi: 1.1, z: 1.0, omega: 0.0, v: 0.0, initial: initials)
+        data = []
         data.append(initialState)
+        if verbose { print("Simulating with initials: \(self.initials), \(self.initialState)") }
         for step in (1...initials.stepsNo) {
             let state = ParticleState(previousState: data.last!, initial: initials)
             data.append(state)

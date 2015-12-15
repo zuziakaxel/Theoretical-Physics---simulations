@@ -33,7 +33,6 @@ if filePath.value != nil {
     path = "wyniki.dat"
 }
 
-print("Results file path: \(path)")
 
 
 
@@ -48,10 +47,44 @@ print("Results file path: \(path)")
 
 let lab2 = Lab2(filePath: path)
 
-print("simulating")
-lab2.esp({
-    print("Done, results saved")
+//for var i in (0...5) {
+//    let dt = pow(10.0, Double(-i))
+//    let lab2 = Lab2(filePath: "kalibracjaDT-\(i+1).dat", initials: Lab2Initial(alpha: 0.5, dt: dt, stepsNo: Int(50.0*(1/dt))) )
+//    lab2.esp({
+//      print("Calibration for dt \(dt) done")
+//    })
+//}
+let alphas = ["30", "45","60","75"]
+var index = 0
+for alpha in [0.523, 0.785, 1.046, 1.308] {
+    
+    let lab2_a = Lab2(filePath: "alpha\(alphas[index]).dat", initials: Lab2Initial(alpha: alpha/2.0, dt: 0.01, stepsNo: 5000))
+    lab2_a.esp({
+        print("Simulation for alpha \(alpha) done")
+    })
+    index++
+}
+
+let velocities = ["1","3","6"]
+index = 0
+for v in [1.0, 3.0, 6.0] {
+    
+    let lab2_a = Lab2(filePath: "v\(velocities[index]).dat", initials: Lab2Initial(alpha: 0.5, dt: 0.01, stepsNo: 5000), initialState: ParticleState(t: 0.0, phi: 1.1, z: 1.0, omega: 0.0, v: v, initial: Lab2Initial(alpha: 0.5, dt: 0.01, stepsNo: 5000)))
+    lab2_a.esp({
+        print("Simulation for v \(v) done")
+    })
+    index++
+}
+
+    let lab2_z = Lab2(filePath: "z.dat", initials: Lab2Initial(alpha: 0.5, dt: 0.01, stepsNo: 5000), initialState: ParticleState(t: 0.0, phi: 1.1, z: 200.0, omega: 0.0, v: -15.0, initial: Lab2Initial(alpha: 0.5, dt: 0.01, stepsNo: 5000)))
+lab2_z.esp({
+    print("Simulatin z done")
 })
+
+//print("simulating")
+//lab2.esp({
+//    print("Done, results saved")
+//})
 
 //lab2.execute(Lab2Initial(alpha: <#T##Double#>, dt: <#T##Double#>, stepsNo: <#T##Int#>), initialState: <#T##[ParticleState]#>)
 
