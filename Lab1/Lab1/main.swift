@@ -81,12 +81,15 @@ lab2_z.esp({
     print("Simulatin z done")
 })
 
-//print("simulating")
-//lab2.esp({
-//    print("Done, results saved")
-//})
-
-//lab2.execute(Lab2Initial(alpha: <#T##Double#>, dt: <#T##Double#>, stepsNo: <#T##Int#>), initialState: <#T##[ParticleState]#>)
 
 
+let lab3_1 = Lab3(filePath: "basic.dat")
+lab3_1.esp({})
 
+for var i in (0...5) {
+    let dt = pow(10.0, Double(-i))
+    let lab3 = Lab3(filePath: "kalibracjaDT-\(i+1).dat", initials: Lab3Initial(dt: dt, stepsNo: Int(50.0*(1/dt))) )
+    lab3.esp({
+      print("Calibration for dt \(dt) done")
+    })
+}

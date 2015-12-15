@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		327D98C81C16B83800DF734A /* Lab2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D98C71C16B83800DF734A /* Lab2.swift */; };
+		3288B0D11C1FF32E0071035A /* Lab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288B0D01C1FF32E0071035A /* Lab3.swift */; };
 		3296B72D1C0E148A009BCD96 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3296B72C1C0E148A009BCD96 /* main.swift */; };
 		3296B7371C0E157F009BCD96 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3296B7331C0E157F009BCD96 /* CommandLine.swift */; };
 		3296B7381C0E157F009BCD96 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3296B7351C0E157F009BCD96 /* Option.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		327D98C71C16B83800DF734A /* Lab2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lab2.swift; sourceTree = "<group>"; };
+		3288B0D01C1FF32E0071035A /* Lab3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lab3.swift; sourceTree = "<group>"; };
 		3296B7291C0E148A009BCD96 /* Lab1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab1; sourceTree = BUILT_PRODUCTS_DIR; };
 		3296B72C1C0E148A009BCD96 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3296B7331C0E157F009BCD96 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				3296B72C1C0E148A009BCD96 /* main.swift */,
 				3296B73B1C0E162C009BCD96 /* Exercise.swift */,
 				327D98C71C16B83800DF734A /* Lab2.swift */,
+				3288B0D01C1FF32E0071035A /* Lab3.swift */,
 				3296B73F1C0E3A61009BCD96 /* ShellCommands.swift */,
 			);
 			path = Lab1;
@@ -153,6 +156,7 @@
 				3296B7391C0E157F009BCD96 /* StringExtensions.swift in Sources */,
 				3296B73E1C0E271B009BCD96 /* AZFile.swift in Sources */,
 				3296B72D1C0E148A009BCD96 /* main.swift in Sources */,
+				3288B0D11C1FF32E0071035A /* Lab3.swift in Sources */,
 				3296B7381C0E157F009BCD96 /* Option.swift in Sources */,
 				327D98C81C16B83800DF734A /* Lab2.swift in Sources */,
 				3296B7371C0E157F009BCD96 /* CommandLine.swift in Sources */,
